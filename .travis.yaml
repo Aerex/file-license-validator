@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+- '8'
+before_install:
+- npm i -g makeshift && makeshift -r https://registry.npmjs.org
+- wget https://github.com/github/hub/releases/download/v2.2.9/hub-linux-386-2.2.9.tgz
+- tar -xvzf hub-linux-386-2.2.9.tgz
+- export PATH=${PATH}:$PWD/hub-linux-386-2.2.9/bin/
+script: npm test && ./update.sh
+branches:
+  only:
+  - master
